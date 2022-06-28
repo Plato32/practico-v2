@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Recetas por me gusta{% endblock %}
+{% block content %}
+
+ <h4>Top 5 recetas con mas likes</h4>
+
+ 
+  {% for receta in recetas %}
+  <!-- <div class="media text-muted pt-3"> -->
+    <div>
+    <!-- <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"> -->
+    <p>
+      <!-- <strong class="d-block text-gray-dark">{{receta.nombre}}</strong>  -->
+      <strong >{{receta.nombre}}</strong>
+      subido el dia {{receta.fecha}} por {{usuarios[receta.usuarioid-1].nombre}}
+      <br>
+      cantidad me gusta  {{receta.cantidadmegusta}}
+     
+    </p>
+
+
+  </div>
+  {% endfor %}
+
+{% endblock %}
+
+    
+  
+
+  

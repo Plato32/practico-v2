@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+<title>{% block title %}Ingresar Ingrediente{% endblock %}</title>
+{% block content %}
+<h2>Ingresar Ingrediente para receta: {{nombre_receta}} </h2> 
+
+  <form action = "{{ url_for('ingresar_ingredientes')}}" method = "post" class = "container">
+    <div class="col-md-6">
+      <label for="validationTextarea" class="form-label">Ingrediente</label>
+      <div class="input-group has-validation">
+        <input type="text" name="nombrei" class="form-control has-validation" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" placeholder="Nombre del Ingrediente" required>
+      </div>
+    </div>
+    <label for="validationCustom03" class="form-label col-md-6">Cantidad</label>
+    <div class="col-md-2">
+      <input type="number" min="0" name="cantidad" class="form-control has-validation" id="validationCustom03" aria-describedby="validationCustom03Feedback" placeholder="cantidad" required>
+    </div>
+    <div class="col-md-10">
+      <label for="validationTextarea" class="form-label">Medida</label>
+      <input class="form-control has-validation" name="unidad" id="validationTextarea" placeholder="gramos/litros/cuchardas" required>
+    </div>
+    <br>
+    
+    <input name="cantidadingredientes" type="number" value="{{cantidadingredientes}}" hidden="True">
+    <input name="idreceta" value="{{idreceta}}" hidden="True">
+
+    {% if cantidadingredientes>9 %}
+    <h5>Ya se ingresaron 10 ingredientes</h5>
+          <button type="submit" id="submit-ingredientes" disabled aria-disabled="true" class="btn btn-outline-secondary mb-3 disabled">Registrar Ingrediente</button>
+        {% else %}
+          <button type="submit" class="btn btn-outline-secondary mb-3">Registrar Ingrediente</button>
+    {% endif %}
+  </form>
+      <a href="{{ url_for('opciones_registrado')}}"type="submit" class="btn btn-secondary mb-3">Guardar Receta</a>
+   
+
+</div>
+{% endblock %}
